@@ -1,0 +1,207 @@
+#include<stdio.h>
+#include<stddef.h>
+#include<string.h>
+#define MAX_SIZE 100
+struct taches
+{
+	/* data */
+int id;
+	char statut[MAX_SIZE];
+	char titre[MAX_SIZE];
+	char description[500];
+    char  deadline[MAX_SIZE];
+	
+};
+struct dead
+{
+	/* data */
+	int day;
+	int month;
+	int yuer;
+};
+int i;
+
+struct taches tache [MAX_SIZE];
+struct dead data ;
+int size = 0 ;
+int main(){
+int choix;
+    do{
+    printf("_________________________________________________________________________________________________________________\n");	
+     printf("[1]: Ajouter une nouvelle tache  \n");
+     printf("[2]: Afficher la liste de toutes les taches\n");
+     printf("[3]: Modifier une tache\n");
+     printf("[4]: Supprimer une tache par identifiant.\n");
+     printf("[5]: Rechercher les Taches \n");
+	  printf(" enter le choix\n"); 
+     scanf("%d",&choix);
+     printf("____________________________________________________________________________________________________________\n");
+   switch(choix){
+
+       case 1:
+       
+        printf("enter nom titre\t");
+    scanf(" %[^\n]s",&tache[size].titre);
+       printf("enter description\t");
+
+    scanf(" %[^\n]s",&tache[size].description);
+       printf("enter  deadline\n");
+	   printf(" enter day\t");
+    scanf(" %d",&data.day);
+	printf(" enter month\t");
+    scanf(" %d",&data.month);
+	   printf(" enter yuer\t");
+    scanf(" %d",&data.yuer);
+	   printf("enter statut\n");
+	   printf("1 : realiser :  \n");
+	   printf("2 : finalisee \n");
+	   printf("3 : realisation”\n");
+    scanf(" %[^\n]s",&tache[size].statut);
+        
+       printf("____________________________________________________________________________________________________________\n");
+     size++;
+	 
+       break;
+	   case 2 :
+
+	   for(int i=0;i<size;i++){
+	printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
+
+	   }
+         
+	   break;
+	   case 3 :
+      
+       int choix3;
+        
+
+           char recherch_titre[MAX_SIZE];
+        printf("Enter title to search: ");
+        scanf(" %[^\n]", recherch_titre);
+        for (int i = 0; i < size; i++) {
+            if (strcmp(recherch_titre, tache[i].titre) == 0) {
+
+     printf("enter description\t");
+    scanf(" %[^\n]s",&tache[i].description);
+       printf("enter  deadline\n");
+	   printf(" enter day\t");
+    scanf(" %d",&data.day);
+	printf(" enter month\t");
+    scanf(" %d",&data.month);
+	   printf(" enter yuer\t");
+    scanf(" %d",&data.yuer);
+	   printf("enter statut\n");
+	   printf("1 : realiser :  \n");
+	   printf("2 : finalisee \n");
+	   printf("3 : realisation”\n");
+    scanf(" %[^\n]s",&tache[i].statut);
+
+    
+
+			}
+        }
+        
+	   break;
+
+
+case 4:
+
+int choix4;
+       printf("1: Title\n");
+    printf("2: ID\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choix4);
+
+    if (choix4 == 1) {
+        char Supprimer_titre[MAX_SIZE];
+        printf("Enter title to search: ");
+        scanf(" %[^\n]", Supprimer_titre);
+        for (int i = 0; i < size; i++) {
+            if (strcmp(Supprimer_titre, tache[i].titre) == 0) {
+				for(int j=0;j<size-1;i++){
+                  tache[j]=tache[j+1];
+				  size--;
+				}
+                
+            }
+        }
+        
+
+break
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    case 5:
+		int choix2;
+       printf("1: Title\n");
+    printf("2: ID\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choix2);
+
+    if (choix2 == 1) {
+        char recherch_titre[MAX_SIZE];
+        printf("Enter title to search: ");
+        scanf(" %[^\n]", recherch_titre);
+        for (int i = 0; i < size; i++) {
+            if (strcmp(recherch_titre, tache[i].titre) == 0) {
+                printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
+
+            }
+        }
+        
+    } else if (choix2 == 2){
+        int recherch_id;
+        printf("Enter ID to search: ");
+        scanf("%d", &recherch_id);
+        if (recherch_id > 0 && recherch_id <= size){
+          printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",recherch_id,tache[recherch_id-1].titre,tache[recherch_id-1].description,data.day,data.month,data.yuer,tache[recherch_id-1].statut);
+ } else {
+            printf("Invalid ID.\n");
+        }
+    } 
+}
+
+
+
+   }while(choix != 5);
+
+    return 0;
+}
+

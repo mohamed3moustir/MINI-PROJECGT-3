@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stddef.h>
 #include<string.h>
+#include<time.h>
 #define MAX_SIZE 100
 struct taches
 {
@@ -22,7 +23,7 @@ int yuer;
 int i;
 
 struct taches tache [MAX_SIZE];
-struct dead data ;
+struct dead data[10] ;
 int size = 0 ;
 int main(){
 int choix;
@@ -41,7 +42,7 @@ int choix;
        case 1:
         int choix1;
         printf("choix wath do you want\n ");
-        printf(" 1 :oui\n 2: no \n");
+        printf(" 1 : Ajout simple\n 2: ajout multiple\n");
         scanf("%d",&choix1);
        if(choix1 == 1){
  
@@ -51,11 +52,11 @@ int choix;
     scanf(" %[^\n]s",&tache[size].description);
        printf("enter  deadline\n");
   printf(" enter day\t");
-    scanf(" %d",&data.day);
+    scanf(" %d",&data[size].day);
 printf(" enter month\t");
-    scanf(" %d",&data.month);
+    scanf(" %d",&data[size].month);
   printf(" enter yuer\t");
-    scanf(" %d",&data.yuer);
+    scanf(" %d",&data[size].yuer);
   printf("enter statut\n");
   printf("1 : realiser :  \n");
   printf("2 : finalisee \n");
@@ -78,11 +79,11 @@ for(int i = 0 ; i<n ;i++){
     scanf(" %[^\n]s",&tache[i].description);
        printf("enter  deadline\n");
   printf(" enter day\t");
-    scanf(" %d",&data.day);
+    scanf(" %d",&data[i].day);
 printf(" enter month\t");
-    scanf(" %d",&data.month);
+    scanf(" %d",&data[i].month);
   printf(" enter yuer\t");
-    scanf(" %d",&data.yuer);
+    scanf(" %d",&data[i].yuer);
   printf("enter statut\n");
   printf("1 : realiser :  \n");
   printf("2 : finalisee \n");
@@ -95,10 +96,19 @@ printf(" enter month\t");
 }
        break;
   case 2 :
+  time_t rawtime;
+    struct tm *info;
+    char buffer[80];
 
+    time(&rawtime);
+    info = localtime(&rawtime);
+    // Format string changed to only include date
+    strftime(buffer, sizeof buffer, "%Y-%m-%d", info);
+    printf("Current date: %s\n",buffer );
   for(int i=0;i<size;i++){
-printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
 
+printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
+   
   }
          
   break;
@@ -112,23 +122,20 @@ printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description
         scanf(" %[^\n]", recherch_titre);
         for (int i = 0; i < size; i++) {
             if (strcmp(recherch_titre, tache[i].titre) == 0) {
-
      printf("enter description\t");
     scanf(" %[^\n]s",&tache[i].description);
        printf("enter  deadline\n");
   printf(" enter day\t");
-    scanf(" %d",&data.day);
+    scanf(" %d",&data[i].day);
 printf(" enter month\t");
-    scanf(" %d",&data.month);
+    scanf(" %d",&data[i].month);
   printf(" enter yuer\t");
-    scanf(" %d",&data.yuer);
+    scanf(" %d",&data[i].yuer);
   printf("enter statut\n");
   printf("1 : realiser :  \n");
   printf("2 : finalisee \n");
   printf("3 : realisation”\n");
-    scanf(" %[^\n]s",&tache[i].statut);
-
-   
+    scanf(" %[^\n]s",&tache[i].statut);   
 
 }
         }
@@ -169,7 +176,7 @@ int choix2;
         scanf(" %[^\n]", recherch_titre);
         for (int i = 0; i < size; i++) {
             if (strcmp(recherch_titre, tache[i].titre) == 0) {
-                printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
+                printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
 
             }
         }
@@ -179,7 +186,7 @@ int choix2;
         printf("Enter ID to search: ");
         scanf("%d", &recherch_id);
         if (recherch_id > 0 && recherch_id <= size){
-          printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",recherch_id,tache[recherch_id-1].titre,tache[recherch_id-1].description,data.day,data.month,data.yuer,tache[recherch_id-1].statut);
+          printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",recherch_id,tache[recherch_id-1].titre,tache[recherch_id-1].description,data[i].day,data[i].month,data[i].yuer,tache[recherch_id-1].statut);
  } else {
             printf("Invalid ID.\n");
         }

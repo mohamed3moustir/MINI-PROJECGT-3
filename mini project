@@ -4,20 +4,20 @@
 #define MAX_SIZE 100
 struct taches
 {
-	/* data */
+/* data */
 int id;
-	char statut[MAX_SIZE];
-	char titre[MAX_SIZE];
-	char description[500];
+char statut[MAX_SIZE];
+char titre[MAX_SIZE];
+char description[500];
     char  deadline[MAX_SIZE];
-	
+
 };
 struct dead
 {
-	/* data */
-	int day;
-	int month;
-	int yuer;
+/* data */
+int day;
+int month;
+int yuer;
 };
 int i;
 
@@ -27,53 +27,85 @@ int size = 0 ;
 int main(){
 int choix;
     do{
-    printf("_________________________________________________________________________________________________________________\n");	
+    printf("_________________________________________________________________________________________________________________\n");
      printf("[1]: Ajouter une nouvelle tache  \n");
      printf("[2]: Afficher la liste de toutes les taches\n");
      printf("[3]: Modifier une tache\n");
      printf("[4]: Supprimer une tache par identifiant.\n");
      printf("[5]: Rechercher les Taches \n");
-	  printf(" enter le choix\n"); 
+ printf(" enter le choix\n");
      scanf("%d",&choix);
      printf("____________________________________________________________________________________________________________\n");
    switch(choix){
 
        case 1:
-       
+        int choix1;
+        printf("choix wath do you want\n ");
+        printf(" 1 :oui\n 2: no \n");
+        scanf("%d",&choix1);
+       if(choix1 == 1){
+ 
         printf("enter nom titre\t");
     scanf(" %[^\n]s",&tache[size].titre);
        printf("enter description\t");
-
     scanf(" %[^\n]s",&tache[size].description);
        printf("enter  deadline\n");
-	   printf(" enter day\t");
+  printf(" enter day\t");
     scanf(" %d",&data.day);
-	printf(" enter month\t");
+printf(" enter month\t");
     scanf(" %d",&data.month);
-	   printf(" enter yuer\t");
+  printf(" enter yuer\t");
     scanf(" %d",&data.yuer);
-	   printf("enter statut\n");
-	   printf("1 : realiser :  \n");
-	   printf("2 : finalisee \n");
-	   printf("3 : realisation”\n");
+  printf("enter statut\n");
+  printf("1 : realiser :  \n");
+  printf("2 : finalisee \n");
+  printf("3 : realisation”\n");
     scanf(" %[^\n]s",&tache[size].statut);
-        
+       
        printf("____________________________________________________________________________________________________________\n");
      size++;
-	 
+}else{
+int n;
+printf("enter size T");
+scanf("%d",&n);
+for(int i = 0 ; i<n ;i++){
+
+
+        printf("enter nom titre\t");
+    scanf(" %[^\n]s",&tache[i].titre);
+       printf("enter description\t");
+
+    scanf(" %[^\n]s",&tache[i].description);
+       printf("enter  deadline\n");
+  printf(" enter day\t");
+    scanf(" %d",&data.day);
+printf(" enter month\t");
+    scanf(" %d",&data.month);
+  printf(" enter yuer\t");
+    scanf(" %d",&data.yuer);
+  printf("enter statut\n");
+  printf("1 : realiser :  \n");
+  printf("2 : finalisee \n");
+  printf("3 : realisation”\n");
+    scanf(" %[^\n]s",&tache[i].statut);
+       
+       printf("____________________________________________________________________________________________________________\n");
+     size++;
+}
+}
        break;
-	   case 2 :
+  case 2 :
 
-	   for(int i=0;i<size;i++){
-	printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
+  for(int i=0;i<size;i++){
+printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data.day,data.month,data.yuer,tache[i].statut);
 
-	   }
+  }
          
-	   break;
-	   case 3 :
-      
+  break;
+  case 3 :
+     
        int choix3;
-        
+       
 
            char recherch_titre[MAX_SIZE];
         printf("Enter title to search: ");
@@ -84,92 +116,48 @@ int choix;
      printf("enter description\t");
     scanf(" %[^\n]s",&tache[i].description);
        printf("enter  deadline\n");
-	   printf(" enter day\t");
+  printf(" enter day\t");
     scanf(" %d",&data.day);
-	printf(" enter month\t");
+printf(" enter month\t");
     scanf(" %d",&data.month);
-	   printf(" enter yuer\t");
+  printf(" enter yuer\t");
     scanf(" %d",&data.yuer);
-	   printf("enter statut\n");
-	   printf("1 : realiser :  \n");
-	   printf("2 : finalisee \n");
-	   printf("3 : realisation”\n");
+  printf("enter statut\n");
+  printf("1 : realiser :  \n");
+  printf("2 : finalisee \n");
+  printf("3 : realisation”\n");
     scanf(" %[^\n]s",&tache[i].statut);
 
-    
+   
 
-			}
+}
         }
-        
-	   break;
+       
+  break;
 
 
 case 4:
 
 int choix4;
-       printf("1: Title\n");
-    printf("2: ID\n");
-    printf("Enter your choice: ");
-    scanf("%d", &choix4);
-
-    if (choix4 == 1) {
         char Supprimer_titre[MAX_SIZE];
         printf("Enter title to search: ");
         scanf(" %[^\n]", Supprimer_titre);
+         
         for (int i = 0; i < size; i++) {
             if (strcmp(Supprimer_titre, tache[i].titre) == 0) {
-				for(int j=0;j<size-1;i++){
+for(int j=0;j<size-1;i++){
                   tache[j]=tache[j+1];
-				  size--;
-				}
-                
+
+}
+                 size--;
             }
         }
-        
-
-break
 
 
+break;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	    case 5:
-		int choix2;
+   case 5:
+int choix2;
        printf("1: Title\n");
     printf("2: ID\n");
     printf("Enter your choice: ");
@@ -185,7 +173,7 @@ break
 
             }
         }
-        
+       
     } else if (choix2 == 2){
         int recherch_id;
         printf("Enter ID to search: ");
@@ -195,12 +183,10 @@ break
  } else {
             printf("Invalid ID.\n");
         }
-    } 
+    }
 }
 
-
-
-   }while(choix != 5);
+}while(choix != 5);
 
     return 0;
 }

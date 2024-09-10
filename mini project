@@ -58,9 +58,9 @@ printf(" enter month\t");
   printf(" enter yuer\t");
     scanf(" %d",&data[size].yuer);
   printf("enter statut\n");
-  printf("1 : realiser :  \n");
-  printf("2 : finalisee \n");
-  printf("3 : realisation”\n");
+  printf(" realiser :  \n");
+  printf(" finalisee \n");
+  printf(" realisation”\n");
     scanf(" %[^\n]s",&tache[size].statut);
        
        printf("____________________________________________________________________________________________________________\n");
@@ -75,7 +75,6 @@ for(int i = 0 ; i<n ;i++){
         printf("enter nom titre\t");
     scanf(" %[^\n]s",&tache[i].titre);
        printf("enter description\t");
-
     scanf(" %[^\n]s",&tache[i].description);
        printf("enter  deadline\n");
   printf(" enter day\t");
@@ -96,18 +95,9 @@ printf(" enter month\t");
 }
        break;
   case 2 :
-  time_t rawtime;
-    struct tm *info;
-    char buffer[80];
-
-    time(&rawtime);
-    info = localtime(&rawtime);
-    // Format string changed to only include date
-    strftime(buffer, sizeof buffer, "%Y-%m-%d", info);
-    printf("Current date: %s\n",buffer );
   for(int i=0;i<size;i++){
 
-printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
+printf("[%i] %s ||%s ||%d/%d/%d || %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
    
   }
          
@@ -176,7 +166,7 @@ int choix2;
         scanf(" %[^\n]", recherch_titre);
         for (int i = 0; i < size; i++) {
             if (strcmp(recherch_titre, tache[i].titre) == 0) {
-                printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
+                printf("[%i] %s ||%s ||%d/%d/%d || %s\n",i+1,tache[i].titre,tache[i].description,data[i].day,data[i].month,data[i].yuer,tache[i].statut);
 
             }
         }
@@ -186,7 +176,7 @@ int choix2;
         printf("Enter ID to search: ");
         scanf("%d", &recherch_id);
         if (recherch_id > 0 && recherch_id <= size){
-          printf("[%i] %s \n%s \n%d/%d/%d \n %s\n",recherch_id,tache[recherch_id-1].titre,tache[recherch_id-1].description,data[i].day,data[i].month,data[i].yuer,tache[recherch_id-1].statut);
+          printf("[%i] %s ||%s ||%d/%d/%d ||%s\n",recherch_id,tache[recherch_id-1].titre,tache[recherch_id-1].description,data[i].day,data[i].month,data[i].yuer,tache[recherch_id-1].statut);
  } else {
             printf("Invalid ID.\n");
         }
